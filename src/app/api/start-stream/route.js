@@ -24,17 +24,17 @@ export async function POST(req) {
 
         });
 
+      
 
-
-        const SCOPES = [
-            'https://www.googleapis.com/auth/youtube',
-            'https://www.googleapis.com/auth/youtube.force-ssl'
-        ];
+const SCOPES = [
+  'https://www.googleapis.com/auth/youtube',
+  'https://www.googleapis.com/auth/youtube.force-ssl'
+];
         // Initialize the YouTube API client
         const youtube = google.youtube({
             version: 'v3',
             auth: oauth2Client,
-            scope: SCOPES
+            scope:SCOPES
         });
 
         // Start a live broadcast by making a POST request
