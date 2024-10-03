@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { useSession, signIn } from "next-auth/react";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export default function Course() {
@@ -73,7 +74,7 @@ export default function Course() {
         {/* PCM Course Card */}
         <div className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white" key="pcm">
           <div className="relative">
-            <img
+            <Image
               src="../../../asset/Green Passive Income Ideas YouTube Thumbnail.png" // Replace with correct image path
               alt="PCM Full course"
               width={400}
@@ -143,7 +144,7 @@ export default function Course() {
         {/* PCB Course Card */}
         <div className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white" key="pcb">
           <div className="relative">
-            <img
+            <Image
               src="/path-to-your-img.png" // Replace with correct image path
               alt="PCB Full course"
               width={400}
