@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar/page";
 import Course from "./components/Course/page";
-import LiveClass from "./components/LiveClass/page";
+
 
 export default function Home() {
     return ( <
