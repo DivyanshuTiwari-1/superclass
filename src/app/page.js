@@ -4,14 +4,18 @@ import Course from "./components/Course/page";
 
 
 export default function Home() {
-  return (
-    <>
-     <Navbar></Navbar>
-     <div className="min-h-screen bg-gray-800 flex items-center justify-center mt-20">
-      <Course />
-   
-    </div>
-   
-    </>
-  );
+    return ( <
+        >
+        <
+        Navbar > < /Navbar> <
+        div className = "min-h-screen bg-gray-800 flex items-center justify-center mt-20" >
+        <
+        Course / >
+
+        <
+        /div>
+
+        <
+        />
+    );
 }
