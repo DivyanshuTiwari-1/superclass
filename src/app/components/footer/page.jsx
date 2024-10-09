@@ -2,7 +2,8 @@
 
 
 
-const  Footer =()=> {
+export default function  Footer() {
+  
   return (
     <>
     <div>
@@ -30,4 +31,4 @@ const  Footer =()=> {
    </>
   )
 }
-export default  Footer;
+
