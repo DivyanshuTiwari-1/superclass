@@ -72,34 +72,17 @@ export default function Course() {
     return (
       <div className="flex flex-col md:flex-row">
         {/* PCM Course Card */}
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white" key="pcm">
+        <div className=" bg-black p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white" key="pcm">
           <div className="relative">
-            <Image
-              src="../../../asset/Green Passive Income Ideas YouTube Thumbnail.png" // Replace with correct image path
+            <img
+              src="https://i.ibb.co/pQGfBvK/DALL-E-2024-10-09-10-24-32-A-cheerful-high-school-girl-smiling-while-holding-books-in-her-arms-weari.webp" // Replace with correct image path
+            
               alt="PCM Full course"
               width={400}
               height={200}
               className="rounded-lg"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="bg-white p-3 rounded-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-gray-900"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 10.197v3.606a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14.75V3.25" />
-                </svg>
-              </button>
-            </div>
+       
           </div>
 
           <h2 className="text-lg font-bold mt-4"> Class 12th PCM Full course</h2>
@@ -142,34 +125,17 @@ export default function Course() {
         </div>
 
         {/* PCB Course Card */}
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white" key="pcb">
+        <div className="bg-black p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white" key="pcb">
           <div className="relative">
-            <Image
-              src="/path-to-your-img.png" // Replace with correct image path
+            <img
+              src="https://i.ibb.co/1GcL8j0/Class-12th-PCB-Full-Course-Image.webp" // Replace with correct image path
+
               alt="PCB Full course"
               width={400}
               height={200}
               className="rounded-lg"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="bg-white p-3 rounded-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-gray-900"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 10.197v3.606a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14.75V3.25" />
-                </svg>
-              </button>
-            </div>
+          
           </div>
 
           <h2 className="text-lg font-bold mt-4"> Class 12th PCB Full course</h2>
@@ -220,7 +186,7 @@ export default function Course() {
 
   if (session && !paymentDone) {
     return (
-      <div className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white">
+      <div className="bg-black-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white">
         {/* Course card when session exists */}
         <h2 className="text-lg font-bold mt-4">Proceed with your payment </h2>
         <h2 className="text-lg font-bold mt-4">you are buying a {user.subject} course</h2>
