@@ -16,11 +16,20 @@ export default function  Footer() {
             <a href="#" className="hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
+            <a href="https://razorpay.com/terms/" className="hover:underline me-4 md:me-6"> Terms and condition</a>
+        </li>
+       <li>
+          
+         <iframe src="https://docs.google.com/document/d/e/2PACX-1vTATROnBpofFEBi-RgHwJ-duCeP7RRslUdbuBWxYZOsU-4LdovW_FjLKumhXuDAG0_rDCKnufu26Jxf/pub?embedded=true"> Refund policy</iframe>
+        </li>
+        <li>
+            <a href="https://razorpay.com/privacy/" className="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
       
         <li>
             <a href="#" className="hover:underline">Contact</a>
+            <p> helpsuperclass@gmail.com</p>
+             <p>9407183302</p>
         </li>
     </ul>
     <p className=" text-blue-200">ward no 01 Dongritola ,
