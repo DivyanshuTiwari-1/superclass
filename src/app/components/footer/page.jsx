@@ -19,8 +19,8 @@ export default function  Footer() {
             <a href="https://razorpay.com/terms/" className="hover:underline me-4 md:me-6"> Terms and condition</a>
         </li>
        <li>
+            <a href="https://docs.google.com/document/d/1niF-r6KJWB0ctyP4cn829E4TtG_kkD9AzPAUNJiFZvo/edit?usp=sharing" className="hover:underline me-4 md:me-6">Refund policy</a>
           
-         <iframe src="https://docs.google.com/document/d/e/2PACX-1vTATROnBpofFEBi-RgHwJ-duCeP7RRslUdbuBWxYZOsU-4LdovW_FjLKumhXuDAG0_rDCKnufu26Jxf/pub?embedded=true"> Refund policy</iframe>
         </li>
         <li>
             <a href="https://razorpay.com/privacy/" className="hover:underline me-4 md:me-6">Privacy Policy</a>
