@@ -9,13 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
 <<<<<<< HEAD
     return (
-        <html lang = "en" >
-        
-        <AuthProvider>
-        
-       <body className="bg-black"> { children } 
-        </body> 
-       </AuthProvider>
+        <html lang="en" className={myFont.variable}>
+            <AuthProvider>
+                <body className="bg-black">
+                    {children}
+                </body>
+            </AuthProvider>
 =======
     return ( 
 <html lang = "en">
