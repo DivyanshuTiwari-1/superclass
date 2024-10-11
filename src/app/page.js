@@ -6,9 +6,9 @@ import Footer from "./components/Footer/page";
 import TypedText from "./components/Typed/page"
 
 export default function Home() {
-    return ( <>
-        
-        <Navbar> </Navbar> 
+    return ( 
+        <>
+        <Navbar/> 
         
         <div className = "min-h-screen bg-black flex items-center justify-center mt-20" >
         
