@@ -7,18 +7,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-<<<<<<< HEAD
-    return (
-        <html lang = "en" >
-        
-        <AuthProvider>
-        
-       <body className="bg-black"> { children } 
-        </body> 
-       </AuthProvider>
-=======
+
+   
+
     return ( 
-<html lang = "en">
+      <html lang = "en">
 
         
         <AuthProvider>
@@ -28,7 +21,7 @@ export default function RootLayout({ children }) {
         
         </body>  
         </AuthProvider> 
->>>>>>> 080df3b23430f25b689f7d151e16b83d57f1d081
+
         </html>
     );
 }
