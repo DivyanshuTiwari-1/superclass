@@ -103,7 +103,7 @@ export default function Course() {
           <ul className="text-sm text-gray-400 mt-4 space-y-2">
             <li className="flex items-center">
               <span className="text-green-500">✔</span>
-              <span className="ml-2">Complete syallabus in 4 months</span>
+              <span className="ml-2">Complete syallabus in 3 months</span>
             </li>
             <li className="flex items-center">
               <span className="text-green-500">✔</span>
@@ -160,7 +160,7 @@ export default function Course() {
           <ul className="text-sm text-gray-400 mt-4 space-y-2">
             <li className="flex items-center">
               <span className="text-green-500">✔</span>
-              <span className="ml-2">Complete syallabus in 4 months</span>
+              <span className="ml-2">Complete syallabus in 3 months</span>
             </li>
             <li className="flex items-center">
               <span className="text-green-500">✔</span>
@@ -204,7 +204,7 @@ export default function Course() {
     return (
       <div>
         <h1>Congratulations, you have successfully enrolled in the {user.subject} course.</h1>
-        <a href="">Join WhatsApp group for further updates</a>
+        <a href="https://chat.whatsapp.com/JkBFNmBs6lw7v8uD9xIUdv">Join WhatsApp group for further updates</a>
       </div>
     );
   }
