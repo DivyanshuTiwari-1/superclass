@@ -2,7 +2,7 @@ import Image from "next/image";
 import Navbar from "./components/Navbar/page";
 import Course from "./components/Course/page";
 
-import Footer from "./components/Footer/page";
+import Footer from "./components/footer/page";
 import TypedText from "./components/Typed/page"
 
 export default function Home() {
