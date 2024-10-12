@@ -142,6 +142,11 @@ export default function TermsOfService() {
                 <p>
                     The failure of Superclass to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision. Any waiver of any provision of these Terms will be effective only if in writing and signed by Superclass.
                 </p>
+                <p>By signing up with us you are supposed to agreed thease terms and conditions</p>
+                <h3 className="font-semibold mt-4">Contact Us</h3>
+                <p>
+                    If you have any questions or concerns about these Terms, please contact us at helpsuperclass@gmail.com.
+                </p>
             </div>
             <Footer />
         </>
