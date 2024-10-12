@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route'; // Adjust the path as needed
+import { authOptions } from '../../api/auth/[...nextauth]/route'; // Adjust the path as needed
 
 export async function POST(req) {
     // Retrieve session to get the access token
-    const session = await getServerSession(req, authOptions);
+    const session = await getServerSession(authOptions);
     if (!session || !session.accessToken) {
         return new Response(JSON.stringify({ error: 'Not authenticated' }), { status: 401 });
     }
