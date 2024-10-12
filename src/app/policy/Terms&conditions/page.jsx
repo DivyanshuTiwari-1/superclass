@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Navbar from '../../components/Navbar/page'; // Update import paths as needed
 import Footer from '../../components/footer/page';
