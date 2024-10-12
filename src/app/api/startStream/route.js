@@ -1,17 +1,13 @@
 import axios from 'axios';
 
-
-
-export default async function POST(req, res) {
+export async function POST(req, res) {
     if (req.method !== 'POST') return res.status(405).end();
 
-    const {accessToken} = await res.json();
+    const { accessToken } = await req.json();
 
     if (!accessToken) {
         return res.status(401).json({ error: "Unauthorized access" });
     }
-
-    
 
     try {
         // Create a new broadcast
@@ -40,7 +36,7 @@ export default async function POST(req, res) {
         const broadcastId = broadcastResponse.data.id;
         return res.status(200).json({ message: "Stream started successfully", broadcastId });
     } catch (error) {
-        console.error("Error starting live stream:", error);
+        console.error("Error starting live stream:", error.response ? error.response.data : error.message);
         return res.status(500).json({ error: "Failed to start live stream" });
     }
 }
