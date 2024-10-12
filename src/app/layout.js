@@ -2,11 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import AuthProvider from "../context/AuthProvider";
 
-// Define the local font
-const myFont = localFont({
-    src: "../public/fonts/YourFontFile.woff2",  // Update this path to your actual font file
-    variable: "--font-yourfont"
-});
+
 
 export const metadata = {
     title: "Superclass",
