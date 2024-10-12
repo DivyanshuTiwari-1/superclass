@@ -1,29 +1,19 @@
 import axios from 'axios';
+import { getServerSession } from 'next-auth';
+import { handler } from '../auth/[...nextauth]/route'; // Adjust this path to where your auth config is located
 
-export default async function handler(req, res) {
-    if (req.method !== 'POST') return res.status(405).end();
+export async function POST(req) {
+    // Retrieve session to get the access token
+    const session = await getServerSession(handler);
+    if (!session || !session.accessToken) {
+        return new Response(JSON.stringify({ error: 'Not authenticated' }), { status: 401 });
+    }
 
-    const refreshToken = process.env.YOUTUBE_REFRESH_TOKEN;
-    const clientId = process.env.GOOGLE_CLIENT_ID;
-    const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+    const accessToken = session.accessToken;
+    const { streamId } = await req.json();
 
-    // Step 1: Get a new access token
-    const tokenResponse = await axios.post(
-        'https://oauth2.googleapis.com/token',
-        new URLSearchParams({
-            client_id: clientId,
-            client_secret: clientSecret,
-            refresh_token: refreshToken,
-            grant_type: 'refresh_token',
-        }).toString(),
-        { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
-    );
-
-    const accessToken = tokenResponse.data.access_token;
-
-    // Step 2: End the live stream
-    const { streamId } = req.body;
     try {
+        // Step 1: End the live stream
         await axios.post(
             `https://youtube.googleapis.com/youtube/v3/liveBroadcasts/delete`,
             { id: streamId },
@@ -34,9 +24,15 @@ export default async function handler(req, res) {
             }
         );
 
-        return res.status(200).json({ message: "Stream ended successfully" });
+        return new Response(JSON.stringify({ message: "Stream ended successfully" }), { status: 200 });
     } catch (error) {
         console.error("Error ending live stream:", error);
-        return res.status(500).json({ error: "Failed to end live stream" });
+        return new Response(JSON.stringify({ error: "Failed to end live stream" }), { status: 500 });
     }
 }
+
+export const config = {
+    api: {
+        bodyParser: true,
+    },
+};
