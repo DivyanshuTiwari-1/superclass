@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from 'next/image';
 import Navbar from "../../components/Navbar/page"; // Adjust the import path as needed
 import Footer from "../../components/footer/page";  // Adjust the import path as needed

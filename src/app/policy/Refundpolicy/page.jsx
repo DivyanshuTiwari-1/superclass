@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from 'next/image';
 import Navbar from "../../components/Navbar/page"; // Adjust the import path as needed
 import Footer from "../../components/footer/page"; // Adjust the import path as needed
@@ -13,7 +13,7 @@ export default function RefundPolicy() {
                 <div className="max-w-3xl mx-auto p-4">
                     <h2 className="text-xl font-semibold mb-4">Refund Policy</h2>
                     <p>
-                        Thank you for choosing our e-learning platform! We’re dedicated to providing you with a high-quality learning experience. Please take a moment to review our refund policy below:
+                        Thank you for choosing our e-learning platform! We&rsquo;re dedicated to providing you with a high-quality learning experience. Please take a moment to review our refund policy below:
                     </p>
                     
                     <h3 className="font-semibold mt-4">Non-Refundable Purchases</h3>
@@ -23,16 +23,16 @@ export default function RefundPolicy() {
 
                     <h3 className="font-semibold mt-4">Access to Content</h3>
                     <p>
-                        Immediately upon payment, you’ll have access to the full range of content associated with your purchase. We encourage you to review the course details and any other relevant information before completing your purchase to ensure it meets your needs.
+                        Immediately upon payment, you&rsquo;ll have access to the full range of content associated with your purchase. We encourage you to review the course details and any other relevant information before completing your purchase to ensure it meets your needs.
                     </p>
 
                     <h3 className="font-semibold mt-4">Support for Technical Issues</h3>
                     <p>
-                        If you experience any technical difficulties that prevent you from accessing your purchased content, please don’t hesitate to contact our support team. We’ll be more than happy to assist you and ensure you have the access you need.
+                        If you experience any technical difficulties that prevent you from accessing your purchased content, please don&rsquo;t hesitate to contact our support team. We&rsquo;ll be more than happy to assist you and ensure you have the access you need.
                     </p>
 
                     <p>
-                        We’re here to help you make the most of your learning experience, so if you have any questions about this policy or our services, please feel free to reach out to us. Thank you for your understanding and support!
+                        We&rsquo;re here to help you make the most of your learning experience, so if you have any questions about this policy or our services, please feel free to reach out to us. Thank you for your understanding and support!
                     </p>
                 </div>
             </div>

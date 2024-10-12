@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react';
 import Navbar from '../../components/Navbar/page'; // Update import paths as needed
 import Footer from '../../components/footer/page';
@@ -12,10 +12,10 @@ export default function TermsOfService() {
 
                 <h3 className="font-semibold mt-4">Introduction</h3>
                 <p>
-                    Superclass (hereinafter referred to as "we," "us," or "our") provides online courses and conducts online classes, live demonstrations, and doubt-clearing sessions for students seeking to enroll in such courses (the "Services"). These Services are accessible at <a href="https://www.superclass.com">https://www.superclass.com</a> and any other websites through which Superclass makes the Services available (collectively, the "Site"), as well as through applications for mobile, tablet, and other smart devices and application program interfaces (collectively, the "Applications").
+                    Superclass (hereinafter referred to as &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) provides online courses and conducts online classes, live demonstrations, and doubt-clearing sessions for students seeking to enroll in such courses (the &ldquo;Services&rdquo;). These Services are accessible at <a href="https://www.superclass.com">https://www.superclass.com</a> and any other websites through which Superclass makes the Services available (collectively, the &ldquo;Site&rdquo;), as well as through applications for mobile, tablet, and other smart devices and application program interfaces (collectively, the &ldquo;Applications&rdquo;).
                 </p>
                 <p>
-                    By accessing or using the Site, Applications, or Services, or by downloading or posting any content from or on the Site or via the Applications, you indicate that you have read, understood, and agree to be bound by these Terms of Service ("Terms"), whether or not you have registered with the Site and/or Application.
+                    By accessing or using the Site, Applications, or Services, or by downloading or posting any content from or on the Site or via the Applications, you indicate that you have read, understood, and agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;), whether or not you have registered with the Site and/or Application.
                 </p>
                 <p>
                     Therefore, please read these Terms carefully before accessing or using the Site, Applications, or Services, or downloading or posting any content from or on the Site or through the Applications, as they contain important information regarding your legal rights, remedies, and obligations.
@@ -115,41 +115,35 @@ export default function TermsOfService() {
 
                 <h3 className="font-semibold mt-4">Intellectual Property</h3>
                 <p>
-                    All content available on the Site, including but not limited to text, graphics, logos, images, audio clips, video clips, data compilations, and software, is the property of Superclass or its content suppliers and is protected by copyright, trademark, and other intellectual property laws. You acknowledge that all associated intellectual property is owned by Superclass and will not modify or remove any rights notices.
+                    All content available on the Site, including but not limited to text, graphics, logos, images, audio clips, video clips, data compilations, and software, is the property of Superclass or its content suppliers and is protected by copyright, trademark, and other intellectual property laws. You acknowledge that all associated intellectual property rights are owned by Superclass or its licensors.
                 </p>
 
                 <h3 className="font-semibold mt-4">Content License</h3>
                 <p>
-                    Subject to compliance with these Terms, Superclass grants you a limited license to access and view content for personal, non-commercial purposes.
+                    By submitting or posting content on or through the Site or Services, you grant Superclass a worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, publicly perform, and publicly display such content.
                 </p>
 
                 <h3 className="font-semibold mt-4">Copyright Policy</h3>
                 <p>
-                    Superclass respects the intellectual property rights of others and expects its users to do the same. If you believe that any content on the Site or Applications infringes your copyright, please notify us with the relevant information to address the issue.
+                    Superclass respects the intellectual property rights of others. If you believe that any content available on the Site infringes your copyright, please notify us and provide the necessary information to support your claim.
                 </p>
 
                 <h3 className="font-semibold mt-4">Limitation of Liability</h3>
                 <p>
-                    In no event shall Superclass or its affiliates, partners, agents, or licensors be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to your access to or use of the Services, whether based on warranty, contract, tort (including negligence), or any other legal theory, even if Superclass has been advised of the possibility of such damages.
+                    In no event shall Superclass, its affiliates, or their respective directors, employees, agents, or licensors be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of (or inability to access or use) the Services.
                 </p>
 
                 <h3 className="font-semibold mt-4">Governing Law and Jurisdiction</h3>
                 <p>
-                    These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction]. You agree that any disputes arising from or relating to these Terms shall be subject to the exclusive jurisdiction of the courts located in [Your Jurisdiction].
+                    These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Superclass is based, without regard to its conflict of law principles.
                 </p>
 
                 <h3 className="font-semibold mt-4">No Waiver</h3>
                 <p>
-                    The failure of Superclass to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision. Any waiver of any provision of these Terms will be effective only if in writing and signed by an authorized representative of Superclass.
-                </p>
-
-                <h3 className="font-semibold mt-4">Contact Us</h3>
-                <p>
-                    If you have any questions or concerns about these Terms, please contact us at helpsuperclass@gmail.com.
+                    The failure of Superclass to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision.
                 </p>
             </div>
             <Footer />
         </>
     );
 }
-
