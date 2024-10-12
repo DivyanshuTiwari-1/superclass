@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSession, signIn } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Link from "next/Link";
+import Link from "next/link";
 export default function Course() {
   const { data: session } = useSession();
   const [user, setUser] = useState({
