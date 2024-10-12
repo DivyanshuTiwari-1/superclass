@@ -1,17 +1,17 @@
 import axios from 'axios';
-import { getServerSession } from "next-auth/next";
 
 
-export default async function handler(req, res) {
+
+export default async function POST(req, res) {
     if (req.method !== 'POST') return res.status(405).end();
 
-    const session = await getServerSession(req, res);
+    const {accessToken} = await res.json();
 
-    if (!session ) {
+    if (!accessToken) {
         return res.status(401).json({ error: "Unauthorized access" });
     }
 
-    const accessToken = session.accessToken;
+    
 
     try {
         // Create a new broadcast

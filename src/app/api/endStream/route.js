@@ -4,12 +4,12 @@ import { getServerSession } from 'next-auth';
 
 export async function POST(req) {
     // Retrieve session to get the access token
-    const session = await req.json();
-    if (!session || !session.accessToken) {
+    const accessToken = await req.json();
+    if (!accessToken) {
         return new Response(JSON.stringify({ error: 'Not authenticated' }), { status: 401 });
     }
 
-    const accessToken = session.accessToken;
+  
     const { streamId } = await req.json();
 
     try {
