@@ -13,17 +13,17 @@ export default function  Footer() {
     </span>
     <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-            <a href="#" className="hover:underline me-4 md:me-6">About</a>
+            <a href="/" className="hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
-            <a href="https://razorpay.com/terms/" className="hover:underline me-4 md:me-6"> Terms and condition</a>
+            <a href="/policy/Terms&conditions" className="hover:underline me-4 md:me-6"> Terms and condition</a>
         </li>
        <li>
-            <a href="https://docs.google.com/document/d/1niF-r6KJWB0ctyP4cn829E4TtG_kkD9AzPAUNJiFZvo/edit?usp=sharing" className="hover:underline me-4 md:me-6">Refund policy</a>
+            <a href="/policy/Refundpolicy" className="hover:underline me-4 md:me-6">Refund policy</a>
           
         </li>
         <li>
-            <a href="https://razorpay.com/privacy/" className="hover:underline me-4 md:me-6">Privacy Policy</a>
+            <a href="/policy/privacypolicy" className="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
       
         <li>

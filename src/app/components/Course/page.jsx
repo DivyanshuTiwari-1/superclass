@@ -205,8 +205,8 @@ export default function Course() {
       <div className="h-80 w-80 justify-center">
         <h1>Congratulations, you have successfully enrolled in the {user.subject} course.Join WhatsApp group for further updates</h1>
         <a href="https://chat.whatsapp.com/JkBFNmBs6lw7v8uD9xIUdv" className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500 transition"> join Now</a>
-        <Link href="/live-class">
-                <a>Go to Live Class</a>
+        <Link href="/components/live-class">
+                <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Go to Live Class</button>
             </Link>
       </div>
     );

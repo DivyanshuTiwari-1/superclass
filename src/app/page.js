@@ -10,11 +10,12 @@ export default function Home() {
             <Navbar />
             <div className="min-h-screen bg-black flex items-center justify-center mt-20">
                 <div className="flex flex-col justify-center">
-                    <TypedText />
+                   
                     <Course />
                 </div>
             </div>
             <Footer />
+
         </>
     );
 }
