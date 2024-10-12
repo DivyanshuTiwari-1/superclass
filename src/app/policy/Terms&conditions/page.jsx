@@ -145,7 +145,7 @@ export default function TermsOfService() {
                 <p>By signing up with us you are supposed to agreed thease terms and conditions</p>
                 <h3 className="font-semibold mt-4">Contact Us</h3>
                 <p>
-                    If you have any questions or concerns about these Terms, please contact us at helpsuperclass@gmail.com.
+                    If you have any questions or concerns about these Terms, please contact us at helpsuperclasses@gmail.com.
                 </p>
             </div>
             <Footer />

@@ -28,7 +28,7 @@ export default function  Footer() {
       
         <li>
             <a href="#" className="hover:underline">Contact</a>
-            <p> helpsuperclass@gmail.com</p>
+            <p> helpsuperclasses@gmail.com</p>
              <p>9407183302</p>
         </li>
     </ul>
