@@ -100,7 +100,7 @@ export default function TermsOfService() {
                     <li>Do not use or encourage the use of intoxicating substances in interactions with children.</li>
                     <li>Avoid any exploitative or abusive behavior towards children.</li>
                     <li>Refrain from providing services to children without parental knowledge.</li>
-                    <li>Avoid favoritism that may lead to negative impacts on children's well-being.</li>
+                    <li>Avoid favoritism that may lead to negative impacts on childrens well-being.</li>
                 </ul>
                 <p><strong>5. Reporting Protocol:</strong> If any individual suspects abuse or neglect involving a child within Superclass:</p>
                 <ul>
