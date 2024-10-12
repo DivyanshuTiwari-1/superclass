@@ -188,7 +188,7 @@ export default function Course() {
     return (
       <div className="bg-black-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white">
         {/* Course card when session exists */}
-        <h2 className="text-lg font-bold mt-4">Proceed with your payment </h2>
+        <h2 className="text-lg font-bold mt-4">Proceed with your payments </h2>
         <h2 className="text-lg font-bold mt-4">you are buying a {user.subject} course</h2>
 
         <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500 transition"
