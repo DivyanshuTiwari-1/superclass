@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import Navbar from "../../components/Navbar/page"; // Adjust the import path as needed
-import Footer from "../../components/footer/page";  // Adjust the import path as needed
+import Footer from "../../components/footer/page"; // Adjust the import path as needed
 
 export default function PrivacyPolicy() {
     return (
@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
                 <div className="max-w-3xl mx-auto p-4">
                     <h2 className="text-xl font-semibold mb-4">Privacy Policy</h2>
                     <p>
-                        This Privacy Policy outlines the privacy practices for Superclass ("We" or "Us") regarding your use of our online platform ("Website"). This Privacy Policy explains how we collect, store, use, share, and secure your personal information on our Website, and describes your choices in relation to your personal information. By visiting our Website, you agree to the terms of this Privacy Policy. If you disagree with these terms, please do not use the Website.
+                        This Privacy Policy outlines the privacy practices for Superclass (We or Us) regarding your use of our online platform (Website). This Privacy Policy explains how we collect, store, use, share, and secure your personal information on our Website, and describes your choices in relation to your personal information. By visiting our Website, you agree to the terms of this Privacy Policy. If you disagree with these terms, please do not use the Website.
                     </p>
 
                     <h3 className="font-semibold mt-4">1. Collection of Information</h3>
@@ -57,7 +57,7 @@ export default function PrivacyPolicy() {
                     </p>
 
                     <p>
-                        Thank you for using Superclass! For any questions or concerns regarding this policy, please contact our support team.
+                        Thank you for using Superclass For any questions or concerns regarding this policy, please contact our support team.
                     </p>
 
                     <p className="font-semibold mt-4">
@@ -69,3 +69,4 @@ export default function PrivacyPolicy() {
         </>
     );
 }
+

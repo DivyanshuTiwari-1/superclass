@@ -12,10 +12,10 @@ export default function TermsOfService() {
 
                 <h3 className="font-semibold mt-4">Introduction</h3>
                 <p>
-                    Superclass (hereinafter referred to as &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) provides online courses and conducts online classes, live demonstrations, and doubt-clearing sessions for students seeking to enroll in such courses (the &ldquo;Services&rdquo;). These Services are accessible at <a href="https://www.superclass.com">https://www.superclass.com</a> and any other websites through which Superclass makes the Services available (collectively, the &ldquo;Site&rdquo;), as well as through applications for mobile, tablet, and other smart devices and application program interfaces (collectively, the &ldquo;Applications&rdquo;).
+                Superclass hereinafter referred to as we, us, or our provides online courses and conducts online classes, live demonstrations, and doubt-clearing sessions for students seeking to enroll in such courses the Services. These Services are accessible at <a href="https://www.superclass.com">https://www.superclass.com</a> and any other websites through which Superclass makes the Services available collectively, the Site, as well as through applications for mobile, tablet, and other smart devices and application program interfaces collectively, the Applications.
                 </p>
                 <p>
-                    By accessing or using the Site, Applications, or Services, or by downloading or posting any content from or on the Site or via the Applications, you indicate that you have read, understood, and agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;), whether or not you have registered with the Site and/or Application.
+                    By accessing or using the Site, Applications, or Services, or by downloading or posting any content from or on the Site or via the Applications, you indicate that you have read, understood, and agree to be bound by these Terms of Service Terms, whether or not you have registered with the Site and or Application.
                 </p>
                 <p>
                     Therefore, please read these Terms carefully before accessing or using the Site, Applications, or Services, or downloading or posting any content from or on the Site or through the Applications, as they contain important information regarding your legal rights, remedies, and obligations.
@@ -35,7 +35,7 @@ export default function TermsOfService() {
                     <li><strong>Courses:</strong> Educational courses listed on the Site or Applications.</li>
                     <li><strong>Course Fees:</strong> The fees or amounts due and payable by a Student for enrollment in a Course.</li>
                     <li><strong>Collective Content:</strong> Member Content and Superclass Content.</li>
-                    <li><strong>Content:</strong> Text, graphics, images, music, software (excluding the Application), audio, video, information, or other materials.</li>
+                    <li><strong>Content:</strong> Text, graphics, images, music, software excluding the Application, audio, video, information, or other materials.</li>
                     <li><strong>Listing:</strong> Courses that are listed by Superclass as available via the Site, Applications, and Services.</li>
                 </ul>
 
@@ -68,12 +68,12 @@ export default function TermsOfService() {
                     <li>Recruit or solicit any members for competing services without prior written approval from Superclass.</li>
                     <li>Impersonate any person or entity or misrepresent your affiliation.</li>
                     <li>Use automated scripts to collect information from or interact with the Website.</li>
-                    <li>Violate these Terms or Superclass's policies.</li>
+                    <li>Violate these Terms or Superclasss policies.</li>
                     <li>Engage in disruptive or harassing behavior on the Website.</li>
                     <li>Systematically retrieve data from the Website to create collections or databases.</li>
-                    <li>Use Superclass's trademarks or proprietary information without express written consent.</li>
-                    <li>Access, tamper with, or use non-public areas of the Website or Superclass's systems.</li>
-                    <li>Attempt to probe, scan, or test vulnerabilities in Superclass's systems or networks.</li>
+                    <li>Use Superclasss trademarks or proprietary information without express written consent.</li>
+                    <li>Access, tamper with, or use non-public areas of the Website or Superclasss systems.</li>
+                    <li>Attempt to probe, scan, or test vulnerabilities in Superclasss systems or networks.</li>
                     <li>Forge any source-identifying information in communications.</li>
                     <li>Attempt to decipher or reverse-engineer any software used to provide the Website.</li>
                     <li>Advocate or assist any third party in engaging in the above behaviors.</li>
@@ -125,22 +125,22 @@ export default function TermsOfService() {
 
                 <h3 className="font-semibold mt-4">Copyright Policy</h3>
                 <p>
-                    Superclass respects the intellectual property rights of others. If you believe that any content available on the Site infringes your copyright, please notify us and provide the necessary information to support your claim.
+                    Superclass respects the intellectual property rights of others and expects users of the Site, Applications, and Services to do the same. We will respond to notices of alleged copyright infringement that comply with applicable law and are properly provided to us.
                 </p>
 
                 <h3 className="font-semibold mt-4">Limitation of Liability</h3>
                 <p>
-                    In no event shall Superclass, its affiliates, or their respective directors, employees, agents, or licensors be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of (or inability to access or use) the Services.
+                    To the fullest extent permitted by applicable law, in no event shall Superclass be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (i) your use or inability to use the Site, Applications, or Services; (ii) any unauthorized access to or use of our servers and or any personal information stored therein; (iii) any interruption or cessation of transmission to or from the Site; (iv) any bugs, viruses, trojan horses, or the like that may be transmitted to or through the Site by any third party; or (v) any errors or omissions in any content or for any loss or damage incurred as a result of your use of any content posted, emailed, transmitted, or otherwise made available through the Site, whether based on warranty, contract, tort including negligence, or any other legal theory, whether or not we have been informed of the possibility of such damage.
                 </p>
 
                 <h3 className="font-semibold mt-4">Governing Law and Jurisdiction</h3>
                 <p>
-                    These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Superclass is based, without regard to its conflict of law principles.
+                    These Terms shall be governed by and construed in accordance with the laws of the jurisdiction where Superclass is based. You agree to submit to the personal and exclusive jurisdiction of the courts located within that jurisdiction.
                 </p>
 
                 <h3 className="font-semibold mt-4">No Waiver</h3>
                 <p>
-                    The failure of Superclass to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision.
+                    The failure of Superclass to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision. Any waiver of any provision of these Terms will be effective only if in writing and signed by Superclass.
                 </p>
             </div>
             <Footer />
