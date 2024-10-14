@@ -27,6 +27,14 @@ const userSchema = new Schema({
     role: {
         type: String,
         default: "student"
+    },
+    orderId:{
+        type:"string",
+        default:"NUll"
+    },
+    paymentId:{
+        type:"string",
+        default:"NUll"
     }
 
 

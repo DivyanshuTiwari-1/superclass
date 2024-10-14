@@ -189,13 +189,12 @@ export default function Course() {
       <div className="bg-black-900 p-6 rounded-lg shadow-lg max-w-sm mx-auto text-white">
         {/* Course card when session exists */}
         <h2 className="text-lg font-bold mt-4">Proceed with your payments </h2>
-        <h2 className="text-lg font-bold mt-4">you are buying a {user.subject} course</h2>
-
-        <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500 transition"
-       onClick={()=>{initiatePayment()}}
-        >
+        <h2 className="text-lg font-bold mt-4">Buy one course you will have acess to multiple courses</h2>
+        <Link href="/components/Razorpay">
+        <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500 transition">
          pay 1999/-
         </button> 
+        </Link>
       </div>
     );
   }
@@ -203,10 +202,15 @@ export default function Course() {
   if (session && paymentDone) {
     return (
       <div className="h-80 w-80 justify-center">
-        <h1>Congratulations, you have successfully enrolled in the {user.subject} course.Join WhatsApp group for further updates</h1>
-        <a href="https://chat.whatsapp.com/JkBFNmBs6lw7v8uD9xIUdv" className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500 transition"> join Now</a>
+        <h1>Congratulations, you have successfully enrolled in the  course.Join WhatsApp group for further updates</h1>
+        <Link href="https://chat.whatsapp.com/JkBFNmBs6lw7v8uD9xIUdv">
+                <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Join WhatsApp</button>
+            </Link>
         <Link href="/components/live-class">
                 <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Go to Live Class</button>
+            </Link>
+            <Link href="/Subjects">
+                <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">explore courses</button>
             </Link>
       </div>
     );
