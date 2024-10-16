@@ -20,7 +20,7 @@ const RazorpayButton = () => {
     try {
       // Get the order ID from the server
       const orderResponse = await axios.post('/api/createorder', {
-        amount: 1 * 100, // 100 INR in paisa
+        amount: 1999 * 100, // 100 INR in paisa
         currency: "INR",
       });
       
@@ -28,7 +28,7 @@ const RazorpayButton = () => {
 
       const options = {
         key: process.env.RAZORPAY_KEY_ID,
-        amount: 1 * 100,
+        amount: 1999 * 100,
         currency: "INR",
         name: "Superclass",
         description: "Test Transaction",
