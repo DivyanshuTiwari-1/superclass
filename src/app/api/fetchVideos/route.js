@@ -10,10 +10,10 @@ export async function POST(req) {
     const { subject } = await req.json(); // Parse the request body
 
     const playlists = {
-        Physics: 'PLUbl0wCZEIJ_Em2jykYWzwoSuTTr1eGBJ',
-        Chemistry: 'YOUR_CHEMISTRY_PLAYLIST_ID',
-        Math: 'YOUR_MATH_PLAYLIST_ID',
-        Biology: 'YOUR_BIOLOGY_PLAYLIST_ID'
+        Physics: 'PLUbl0wCZEIJ-9x7O-UEBulwhE1VAh_9Lr',
+        Chemistry: 'PLUbl0wCZEIJ_NPCKUsd33ugbqN-yvG_oL',
+        Math: 'PLUbl0wCZEIJ8CzXhmJEpn-PN0ENEfvjgA',
+        Biology: 'PLUbl0wCZEIJ9T-47CVVTlv6UlrJqoyLm-'
     };
 
     const playlistId = playlists[subject];
