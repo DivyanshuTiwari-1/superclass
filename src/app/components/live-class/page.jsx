@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import Peer from 'simple-peer';
 
-const socket = io('http://localhost:3000'); // Backend server URL
+const socket = io(); // Backend server URL
 
-const LiveClass = ({ roomId }) => {
+export default function LiveClass({roomId}) {
   const [peers, setPeers] = useState([]);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
@@ -112,4 +112,4 @@ const PeerVideo = ({ peer }) => {
   return <video ref={ref} autoPlay controls/>;
 };
 
-export default LiveClass;
+
