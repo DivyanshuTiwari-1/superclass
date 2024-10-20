@@ -1,97 +1,115 @@
 "use client"
-import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import io from 'socket.io-client';
+import Peer from 'simple-peer';
 
-export default function LiveClassPage() {
-    const [streamId, setStreamId] = useState(null);
-    const [videoId, setVideoId] = useState(''); // Placeholder for the stream's video ID
-    const [isteacher,setisteacher]=useState(false);
+const socket = io('http://localhost:3000'); // Backend server URL
 
-    const {data:session}=useSession();
-    const startStream = async () => {
-        const response = await fetch('/api/youtube/startStream', { method: 'POST' });
-        const data = await response.json();
-        if (data.streamId) {
-            setStreamId(data.streamId);
-            setVideoId(data.streamId);  // Update as needed for your video ID
-            alert('Live stream started!');
-        } else {
-            alert('Failed to start live stream.');
-        }
-    };
+const LiveClass = ({ roomId }) => {
+  const [peers, setPeers] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState('');
+  const userVideo = useRef();
+  const peersRef = useRef([]);
+  const room = roomId;
 
-    const endStream = async () => {
-        const response = await fetch('/api/youtube/endStream', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ streamId }),
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+      userVideo.current.srcObject = stream;
+
+      socket.emit('join-room', room, socket.id);
+
+      socket.on('user-connected', userId => {
+        const peer = createPeer(userId, socket.id, stream);
+        peersRef.current.push({
+          peerID: userId,
+          peer,
         });
+        setPeers(users => [...users, peer]);
+      });
 
-        const data = await response.json();
-        if (data.message) {
-            setStreamId(null);
-            setVideoId('');
-            alert('Live stream ended!');
-        } else {
-            alert('Failed to end live stream.');
+      socket.on('receive-message', (message) => {
+        setMessages(prevMessages => [...prevMessages, message]);
+      });
+
+      socket.on('user-disconnected', userId => {
+        const peerObj = peersRef.current.find(p => p.peerID === userId);
+        if (peerObj) {
+          peerObj.peer.destroy();
         }
+        setPeers(users => users.filter(p => p.peerID !== userId));
+      });
+    });
+
+    return () => {
+      socket.disconnect();
     };
-   
-    useEffect(() => {
-        if (session && session.user) {
-          // Function to fetch payment status
-          const fetchteacherStatus = async () => {
-            try {
-              // Send correct user details to the backend
-              const response = await axios.post("/api/saveuser", {
-                email: session.user.email,
-                name: session.user.name,
-              });
-    
-              const { role } = response.data;
-    
-              // If the paymentstatus is true, set paymentDone to true
-              if (role=="teacher") {
-                setisteacher(true);
-              }
-            } catch (error) {
-              console.error("Error fetching payment status:", error);
-            }
-          };
-    
-          // Call the fetchPaymentStatus function
-          fetchteacherStatus();
-        }
-      }, [session]);
+  }, []);
 
-    return (
+  function createPeer(userToSignal, callerID, stream) {
+    const peer = new Peer({
+      initiator: true,
+      trickle: false,
+      stream,
+    });
+
+    peer.on('signal', signal => {
+      socket.emit('send-signal', { userToSignal, callerID, signal });
+    });
+
+    return peer;
+  }
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    socket.emit('send-message', message, room);
+    setMessages(prevMessages => [...prevMessages, message]);
+    setMessage('');
+  };
+
+  const handleScreenShare = async () => {
+    const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+    socket.emit('share-screen', stream, room);
+  };
+
+  return (
+    <div>
+      <div>
+        <video ref={userVideo} autoPlay muted />
+        {peers.map((peer, index) => (
+          <PeerVideo key={index} peer={peer} />
+        ))}
+      </div>
+      <div>
+        <form onSubmit={handleSendMessage}>
+          <input 
+            value={message} 
+            onChange={(e) => setMessage(e.target.value)} 
+            placeholder="Send a message" 
+          />
+          <button type="submit">Send</button>
+        </form>
+        <button onClick={handleScreenShare}>Share Screen</button>
         <div>
-            <h1>Live Class</h1>
-            {isteacher? (
-                <>
-                    {streamId ? (
-                        <button onClick={endStream}>End Live Stream</button>
-                    ) : (
-                        <button onClick={startStream}>Start Live Stream</button>
-                    )}
-                </>
-            ) : (
-                videoId ? (
-                    <div>
-                        <h2>Live Stream</h2>
-                        <iframe
-                            width="560"
-                            height="315"
-                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                ) : (
-                    <p>No live stream is currently available.</p>
-                )
-            )}
+          {messages.map((msg, index) => (
+            <p key={index}>{msg}</p>
+          ))}
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
+
+const PeerVideo = ({ peer }) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    peer.on('stream', stream => {
+      ref.current.srcObject = stream;
+    });
+  }, [peer]);
+
+  return <video ref={ref} autoPlay controls/>;
+};
+
+export default LiveClass;

@@ -9,20 +9,19 @@ import axios from 'axios';
 const VideosPage = () => {
     const params = useParams();
     const subject = params.subject;
-    const { data: session } = useSession(); // Get session data
+    const { data: session } = useSession();
     const [videos, setVideos] = useState([]);
-    const [page, setPage] = useState(1); // Track the current page
-    const [playingVideo, setPlayingVideo] = useState(null); // Track currently playing video
-    const [dropdownOpen, setDropdownOpen] = useState(false); // Track dropdown state
-    const [loading, setLoading] = useState(false); // Track loading state
-    const [error, setError] = useState(null); // Track error state
-    const [paymentDone, setPaymentDone] = useState(false); // Track payment status
+    const [page, setPage] = useState(1);
+    const [playingVideo, setPlayingVideo] = useState(null);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [paymentDone, setPaymentDone] = useState(false);
 
     useEffect(() => {
         const fetchPaymentStatus = async () => {
             if (session) {
                 try {
-                    // Send correct user details to the backend
                     const response = await axios.post("/api/saveuser", {
                         email: session.user.email,
                         name: session.user.name,
@@ -30,7 +29,6 @@ const VideosPage = () => {
 
                     const { paymentstatus } = response.data;
 
-                    // If the paymentstatus is true, set paymentDone to true
                     if (paymentstatus) {
                         setPaymentDone(true);
                     }
@@ -40,7 +38,6 @@ const VideosPage = () => {
             }
         };
 
-        // Call the fetchPaymentStatus function
         fetchPaymentStatus();
     }, [session]);
 
@@ -48,9 +45,19 @@ const VideosPage = () => {
         const fetchVideos = async () => {
             setLoading(true);
             try {
-                const response = await axios.post('/api/fetchVideos', { subject });
-                const allVideos = response.data.videos || [];
-                setVideos(allVideos);
+                const folderIDs = {
+                    Physics: '1nQc0jq2CVhBmYdqGmja2Z37ViJhKSe5o',
+                    Chemistry: '1Xu-qgeDmfzMdht2eNemRiB85EF81l_fl',
+                    Math: '1XpbY8nU7yo-HPOPfviQ6rDPIyJTz9Ugh',
+                    Biology: '1Xu-qgeDmfzMdht2eNemRiB85EF81l_fl',
+                };
+
+                const folderId = folderIDs[subject]; // Get the folder ID for the subject
+
+                const response = await axios.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}' in parents&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&fields=files(id,name,mimeType)`);
+                const videoFiles = response.data.files.filter(file => file.mimeType.startsWith('video/'));
+                
+                setVideos(videoFiles);
             } catch (error) {
                 setError('Failed to fetch videos. Please try again later.');
                 console.error('Error fetching videos:', error);
@@ -65,10 +72,10 @@ const VideosPage = () => {
     }, [subject]);
 
     const loadMoreVideos = () => {
-        setPage((prevPage) => prevPage + 1);
+        setPage(prevPage => prevPage + 1);
     };
 
-    const displayedVideos = videos.slice(0, page * 5); // Show videos based on the current page
+    const displayedVideos = videos.slice(0, page * 5);
 
     return (
         <>
@@ -93,28 +100,27 @@ const VideosPage = () => {
                         </div>
                     </div>
 
-                    {/* Loading/Error States */}
                     {loading && <p className="text-blue-500">Loading videos...</p>}
                     {error && <p className="text-red-500">{error}</p>}
 
-                    {/* Check if payment is done */}
-                    {!paymentDone ? (<>
-                        <p className="text-red-500">Please complete your payment to access the videos.</p>
-                        <a href="/" className="bg-green-600 text-white px-4 py-2 rounded mt-4  font-bold hover:bg-green-500 transition">Home</a>
+                    {!paymentDone ? (
+                        <>
+                            <p className="text-red-500">Please complete your payment to access the videos.</p>
+                            <a href="/" className="bg-green-600 text-white px-4 py-2 rounded mt-4 font-bold hover:bg-green-500 transition">Home</a>
                         </>
                     ) : (
                         <>
-                            {/* Video Player Section */}
                             {playingVideo && (
                                 <div className="w-full max-w-4xl mb-5">
                                     <iframe 
                                         width="100%" 
                                         height="400" 
-                                        src={`https://www.youtube.com/embed/${playingVideo}?autoplay=1&controls=1&modestbranding=1&rel=0`} 
-                                        title="YouTube video player" 
+                                        src={`https://drive.google.com/file/d/${playingVideo}/preview`} 
+                                        title="Google Drive video player" 
                                         frameBorder="0" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowFullScreen
+                                         sandbox="allow-same-origin allow-scripts allow-presentation"
                                     ></iframe>
                                     <button 
                                         onClick={() => setPlayingVideo(null)} 
@@ -125,18 +131,18 @@ const VideosPage = () => {
                                 </div>
                             )}
 
-                            {/* Video List */}
                             <div className="w-full max-w-4xl">
-                                {displayedVideos.map((video) => (
-                                    <div key={video.id} className="flex items-center border p-4 transition rounded-lg m-2">
-                                        <img 
-                                            src={video.thumbnail} 
-                                            alt={video.title} 
-                                            className="w-24 h-12 object-cover rounded-lg mr-4" 
-                                        />
+                                {displayedVideos.map(video => (
+                                    <div key={video.id} className="flex items-center border p-4 transition rounded-lg m-2 bg-gray-800">
+                                        <div className="flex-shrink-0">
+                                            <img 
+                                                src={`https://drive.google.com/thumbnail?id=${video.id}`} 
+                                                alt={video.name} 
+                                                className="w-24 h-12 object-cover rounded-lg mr-4" 
+                                            />
+                                        </div>
                                         <div>
-                                            <h3 className="text-lg font-semibold">{video.title}</h3>
-                                            <p className="text-white-500">{video.duration}</p>
+                                            <h3 className="text-lg font-semibold text-white">{video.name}</h3>
                                             <button 
                                                 onClick={() => setPlayingVideo(video.id)} 
                                                 className="text-blue-500 hover:underline text-xs"
@@ -151,12 +157,11 @@ const VideosPage = () => {
                     )}
                 </main>
 
-                {/* Load More Button */}
                 {displayedVideos.length < videos.length && paymentDone && (
                     <div className="flex justify-center mb-4">
                         <button 
                             onClick={loadMoreVideos} 
-                            className="bg-green-600 text-white px-4 py-2 rounded mt-4  font-bold hover:bg-green-500 transition"
+                            className="bg-green-600 text-white px-4 py-2 rounded mt-4 font-bold hover:bg-green-500 transition"
                         >
                             Load More
                         </button>
@@ -169,4 +174,3 @@ const VideosPage = () => {
 };
 
 export default VideosPage;
-
