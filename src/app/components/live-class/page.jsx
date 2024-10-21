@@ -5,7 +5,7 @@ import Peer from 'simple-peer';
 
 const socket = io(); // Backend server URL
 
-export default function LiveClass({roomId}) {
+export default function LiveClass(roomId) {
   const [peers, setPeers] = useState([]);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
