@@ -2,6 +2,7 @@ const express = require('express');
 const next = require('next');
 const http = require('http');
 const { Server } = require('socket.io');
+const axios = require('axios');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -16,21 +17,34 @@ app.prepare().then(() => {
   io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
 
-    socket.on('join-room', (roomId, userId) => {
-      socket.join(roomId);
-      socket.broadcast.to(roomId).emit('user-connected', userId);
+    // Join room and emit user connection
+    socket.on('join-room', async (userId) => {
+      try {
+        // Fetch room ID from the API
+        const response = await axios.post('http://localhost:3000/api/liveclass', { title: 'Class Title' });
+        const roomId = response.data.roomId;
 
-      socket.on('disconnect', () => {
-        socket.broadcast.to(roomId).emit('user-disconnected', userId);
-      });
-    });
+        // Join the room
+        socket.join(roomId);
+        socket.broadcast.to(roomId).emit('user-connected', userId);
 
-    socket.on('send-message', (message, roomId) => {
-      io.to(roomId).emit('receive-message', message);
-    });
+        // Handle user disconnection
+        socket.on('disconnect', () => {
+          socket.broadcast.to(roomId).emit('user-disconnected', userId);
+        });
 
-    socket.on('share-screen', (data, roomId) => {
-      socket.broadcast.to(roomId).emit('screen-shared', data);
+        // Handle message sending
+        socket.on('send-message', (message) => {
+          io.to(roomId).emit('receive-message', message);
+        });
+
+        // Handle screen sharing
+        socket.on('share-screen', (data) => {
+          socket.broadcast.to(roomId).emit('screen-shared', data);
+        });
+      } catch (error) {
+        console.error('Error fetching room ID:', error);
+      }
     });
   });
 

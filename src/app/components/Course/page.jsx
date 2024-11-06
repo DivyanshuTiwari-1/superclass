@@ -4,6 +4,7 @@ import { useSession, signIn } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { isThenable } from "next/dist/client/components/router-reducer/router-reducer-types";
 export default function Course() {
   const { data: session } = useSession();
   const [user, setUser] = useState({
@@ -12,7 +13,7 @@ export default function Course() {
   });
   const [paymentDone, setPaymentDone] = useState(false);
  
-  
+  const[teach,setteach]=useState(false);
   
 
 
@@ -29,11 +30,15 @@ export default function Course() {
             name: session.user.name,
           });
 
-          const { paymentstatus } = response.data;
+          const { paymentstatus,isteacher } = response.data;
 
           // If the paymentstatus is true, set paymentDone to true
           if (paymentstatus) {
             setPaymentDone(true);
+
+          }
+          if(isteacher=== "Teacher"){
+            setteach(true);
           }
         } catch (error) {
           console.error("Error fetching payment status:", error);
@@ -200,13 +205,32 @@ export default function Course() {
   }
 
   if (session && paymentDone) {
+    if(teach){
+         return (
+          <div className="h-80 w-80 justify-center">
+          <h1>Congratulations, you have successfully enrolled in the  course.Join WhatsApp group for further updates</h1>
+          <Link href="https://chat.whatsapp.com/JkBFNmBs6lw7v8uD9xIUdv">
+                  <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Join WhatsApp</button>
+              </Link>
+          <Link href="/components/student">
+                  <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Go to Live Class</button>
+              </Link>
+              <Link href="/Subjects">
+                  <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">explore courses</button>
+              </Link>
+              <Link href="/components/Teacher">
+                  <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Take Class</button>
+              </Link>
+        </div>
+         )
+    }
     return (
       <div className="h-80 w-80 justify-center">
         <h1>Congratulations, you have successfully enrolled in the  course.Join WhatsApp group for further updates</h1>
         <Link href="https://chat.whatsapp.com/JkBFNmBs6lw7v8uD9xIUdv">
                 <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Join WhatsApp</button>
             </Link>
-        <Link href="/components/live-class">
+        <Link href="/components/student">
                 <button className="bg-green-600 text-white px-4 py-2 rounded mt-4 w-full font-bold hover:bg-green-500">Go to Live Class</button>
             </Link>
             <Link href="/Subjects">
