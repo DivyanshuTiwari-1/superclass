@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 export default function TeacherPage() {
   const [title, setTitle] = useState("");
@@ -9,9 +10,32 @@ export default function TeacherPage() {
   const [liveClass, setLiveClass] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [paymentDone, setPaymentDone] = useState(false);
+  const [isTeacher, setIsTeacher] = useState(false);
 
-  // Fetch live class details on load
- 
+  const { data: session } = useSession();
+
+  // Fetch live class details and payment status on load
+  useEffect(() => {
+    if (session?.user) {
+      const fetchPaymentStatus = async () => {
+        try {
+          const response = await axios.post("/api/saveuser", {
+            email: session.user.email,
+            name: session.user.name,
+          });
+
+          const { paymentstatus, isteacher } = response.data;
+          setPaymentDone(paymentstatus);
+          setIsTeacher(isteacher === "Teacher");
+        } catch (error) {
+          console.error("Error fetching payment status:", error);
+        }
+      };
+
+      fetchPaymentStatus();
+    }
+  }, [session]);
 
   const startClass = async () => {
     try {
@@ -24,29 +48,30 @@ export default function TeacherPage() {
 
   const endClass = async () => {
     try {
-      const response = await axios.patch('/api/liveclass', { videoId });
+      const response = await axios.patch("/api/liveclass", { videoId });
       if (response.status === 200) {
-        setLiveClass(null);  // Clear live class data when ending
-        setTitle('');
-        setSubject('');
-        setVideoId('');
+        setLiveClass(null);
+        setTitle("");
+        setSubject("");
+        setVideoId("");
       }
     } catch (error) {
-      console.error('Error ending live class:', error.response?.data || error.message);
+      console.error("Error ending live class:", error.response?.data || error.message);
     }
   };
-  
+
   // Handle drag events
   const handleMouseDown = () => setIsDragging(true);
   const handleMouseMove = (e) => {
     if (isDragging) {
-      setPosition({
-        x: e.clientX - 200, // Center the div
-        y: e.clientY - 50,
-      });
+      setPosition({ x: e.clientX - 200, y: e.clientY - 50 });
     }
   };
   const handleMouseUp = () => setIsDragging(false);
+
+  if (!paymentDone && !isTeacher) {
+    return <p>You cannot access this page</p>;
+  }
 
   return (
     <div>
@@ -78,7 +103,7 @@ export default function TeacherPage() {
               type="text"
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="w-full px-3 text-black py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"
+              className="w-full px-3 py-2 text-black border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"
             />
           </div>
           <div>
@@ -87,7 +112,7 @@ export default function TeacherPage() {
               type="text"
               value={videoId}
               onChange={(e) => setVideoId(e.target.value)}
-              className="w-full text-black px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"
+              className="w-full px-3 py-2 text-black border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition"
             />
           </div>
           <div className="flex space-x-4 mt-6">
@@ -119,10 +144,10 @@ export default function TeacherPage() {
               allowFullScreen
               className="absolute top-0 left-0 w-full h-full"
               style={{
-                width: "500px",
-                height: "500px",
+                width: "800px",
+                height: "800px",
                 borderRadius: "8px",
-                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)"
+                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
               }}
             ></iframe>
           </div>
@@ -131,4 +156,3 @@ export default function TeacherPage() {
     </div>
   );
 }
-

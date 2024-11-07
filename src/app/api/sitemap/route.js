@@ -1,6 +1,6 @@
 // pages/api/sitemap.js
 
-export  async function handler(req, res) {
+export  async function GET(req, res) {
     // Set the base URL of your application
     const baseUrl = 'https://www.superclasses.site';
 
