@@ -9,29 +9,37 @@ export default function StudentPage() {
 
   useEffect(() => {
     const fetchLiveClass = async () => {
-      const response = await fetch('/api/liveclass');
-      const data = await response.json();
-      setLiveClass(data.liveClass);
+      try {
+        const response = await fetch('/api/liveclass');
+        const data = await response.json();
+        setLiveClass(data.liveClass);
+      } catch (error) {
+        console.error("Error fetching live class:", error);
+      }
     };
 
     const fetchPaymentStatus = async () => {
       if (session?.user?.email) {
-        const response = await fetch('/api/saveuser', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: session.user.email }),
-        });
-        const data = await response.json();
-        setPaymentStatus(data.paymentStatus); // Assuming response contains a paymentStatus field
+        try {
+          const response = await fetch('/api/saveuser', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: session.user.email, name: session.user.name }),
+          });
+          const data = await response.json();
+          setPaymentStatus(data.paymentstatus); // Corrected payment status extraction
+        } catch (error) {
+          console.error("Error fetching payment status:", error);
+        }
       }
     };
 
     if (session) {
       fetchPaymentStatus();
     }
-
+    
     fetchLiveClass();
   }, [session]);
 
@@ -52,7 +60,7 @@ export default function StudentPage() {
   }
 
   if (!liveClass || !liveClass.isLive) {
-    return <p>No live class is currently running.</p>;
+    return <p>No live class is currently running. classes start from 12Nov 2024</p>;
   }
 
   return (
@@ -64,13 +72,7 @@ export default function StudentPage() {
           frameBorder="1"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '500px',
-            height: '500px',
-          }}
+        
         ></iframe>
       </div>
     </div>

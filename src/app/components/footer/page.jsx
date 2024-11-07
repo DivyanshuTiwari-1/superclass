@@ -29,7 +29,7 @@ export default function  Footer() {
         <li>
             <a href="#" className="hover:underline">Contact</a>
             <p> helpsuperclasses@gmail.com</p>
-             <p>9407183302</p>
+             
         </li>
     </ul>
     <p className=" text-blue-200">ward no 01 Dongritola ,
