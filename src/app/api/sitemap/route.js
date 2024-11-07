@@ -1,5 +1,5 @@
 // pages/api/sitemap.js
-
+import { NextResponse } from "next/server";
 export  async function GET(req, res) {
     // Set the base URL of your application
     const baseUrl = 'https://www.superclasses.site';
@@ -28,6 +28,7 @@ export  async function GET(req, res) {
 </urlset>`;
 
     // Set the response headers and send the sitemap XML
-    res.setHeader('Content-Type', 'application/xml');
-    res.status(200).send(sitemap);
+    const response = new NextResponse(sitemap);
+  response.headers.set('Content-Type', 'application/xml');
+  return response;
 }
