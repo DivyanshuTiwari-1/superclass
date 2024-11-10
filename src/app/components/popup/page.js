@@ -2,7 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function BrowserPopup() {
+export default function Popup() {
   const [isEmbedded, setIsEmbedded] = useState(false);
   const [isPopupShown, setIsPopupShown] = useState(false);
 
