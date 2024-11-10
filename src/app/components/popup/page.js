@@ -2,7 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function Popup() {
+export default function BrowserPopup() {
   const [isEmbedded, setIsEmbedded] = useState(false);
   const [isPopupShown, setIsPopupShown] = useState(false);
 
@@ -12,14 +12,12 @@ export default function Popup() {
   };
 
   useEffect(() => {
-    // Check if popup was shown before
     const popupShown = localStorage.getItem("popupShown");
 
-    // Only show the popup if it's an embedded browser and it hasn't been shown before
     if (checkEmbeddedBrowser() && !popupShown) {
       setIsEmbedded(true);
       setIsPopupShown(true);
-      localStorage.setItem("popupShown", "true"); // Mark as shown
+      localStorage.setItem("popupShown", "true");
     }
   }, []);
 
@@ -30,16 +28,18 @@ export default function Popup() {
       <div className="bg-white p-8 rounded-lg text-center shadow-lg max-w-xs w-full">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Open in Browser</h2>
         <p className="text-gray-600 mb-6">
-          For the best experience, please open this page in your default browser
-          (e.g., Chrome ).
+          To access the full experience, please open this page in your default browser.
         </p>
-        <button
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          onClick={() => window.open("https://superclasses.site", "_blank")}
+        <a
+          href="https://superclasses.site"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 inline-block"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Open in Browser
-        </button>
+        </a>
       </div>
     </div>
   );
 }
+
