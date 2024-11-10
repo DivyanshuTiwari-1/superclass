@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 export default function Popup() {
   const [isEmbedded, setIsEmbedded] = useState(false);
-  const [isPopupShown, setIsPopupShown] = useState(false);
 
   const checkEmbeddedBrowser = () => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -12,34 +11,30 @@ export default function Popup() {
   };
 
   useEffect(() => {
-    const popupShown = localStorage.getItem("popupShown");
-
-    if (checkEmbeddedBrowser() && !popupShown) {
+    if (checkEmbeddedBrowser()) {
       setIsEmbedded(true);
-      setIsPopupShown(true);
-      localStorage.setItem("popupShown", "true");
+      // Attempt to open in Chrome automatically
+      window.location.href = "googlechrome://navigate?url=https://superclasses.site";
     }
   }, []);
 
-  if (!isEmbedded || !isPopupShown) return null;
+  if (!isEmbedded) return null;
 
+  // Fallback popup for users who don't get redirected
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
       <div className="bg-white p-8 rounded-lg text-center shadow-lg max-w-xs w-full">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Open in Browser</h2>
         <p className="text-gray-600 mb-6">
-          To access the full experience, please open this page in your default browser.
+          For the best experience, please open this page in your default browser.
         </p>
-        <a
-          href="https://superclasses.site"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 inline-block"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => window.open("https://superclasses.site", "_blank")}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
           Open in Browser
-        </a>
+        </button>
       </div>
     </div>
   );
 }
-
